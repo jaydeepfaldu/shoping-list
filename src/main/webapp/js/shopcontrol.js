@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 app.run(function($rootScope){
 	$rootScope.clearData = function(){
 		localStorage.clear();
@@ -179,8 +179,3 @@ app.controller("s3",function($scope){
 });
 
 
-=======
-app.controller("s1",function($scope){
-	
-});
->>>>>>> branch 'master' of https://github.com/jaydeepfaldu/shoping-list.git
