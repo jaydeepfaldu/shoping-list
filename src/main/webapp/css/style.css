@@ -1,7 +1,6 @@
 @CHARSET "ISO-8859-1";
 
 
-
 	body
 	{
 		margin: 0px;
@@ -9,147 +8,131 @@
 	}
 	
 	
-	
-	ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
 }
 
 li {
-    float: left;
+	float: left;
 }
 
 li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
 }
 
-li a:hover:not(.active) {
-    background-color: #111;
+li a:hover:not (.active ) {
+	background-color: #111;
 }
 
 .active {
-    background-color: #4CAF50;
+	background-color: #4CAF50;
 }
-	
-	
-	.title{
-		background-color: #005151; 
-		line-height: 30px; 
-		color:white;
-	}
 
-  table {
-    margin: 0 auto; /* or margin: 0 auto 0 auto */
-    
-    
-  }
-  
-  .addfrm td{
-  padding: 5px;
-  }
-  
-  header{
-  
-  	line-height: 100px;
-  	text-align: center;
-  	font-family:verdana;
-  	font-size: 25px;
-  	font-weight :bold;
-  	background-color: #008080;
-  	color: white;
-  
-  }
-  
-  input[type='button']{
-  width: 100px;
-  height: 40px;
-  
-  background-color: #005b5b;
-  
-  color:white;
-  border-style:solid;
-  border-color: white;
-  }
-  
-  input[type='button']:hover{
-   color:yellow;
-   border-color:yellow;
-   
-  
-  }
-  
-  input[type='checkbox']{
- width: 20px !important;
-  height: 20px !important;
-  margin: 3px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -o-appearance: none;
-  appearance:none;
-  outline: 2px solid lightblue;
-  box-shadow: none;
-  font-size: 2em;
-  }
-   
-  
-  input[type=number] {
-  -moz-appearance: textfield;
+.title {
+	background-color: #005151;
+	line-height: 30px;
+	color: white;
 }
-  
-  tr{
-    background-color: #d7dbe8;
-  }
-  
-  thead tr{
-    background-color: #005151;
-    color: white;
-    font-size: 18px;
-     
-  }
-  
-  td{
-  padding: 10px;
-  }
-  
- .error
- {
- 	display: inline-block; 
- 	position: absolute;
- 	font-size: 14px;
- 	background-color: white;
- 	border: 1px solid red;
- 	margin-left: 10px;
- 	padding: 2px 5px 2px 5px;
- 	color: red;
- 	
- }
-  
- .even {
-    background-color: #c9deef;
-  }
-  
-  .odd {
-    background-color: #95bfe1;
-  }
-  
-  .highprice
-  {
-  	background-color: #ff6a6a;
-  }
-  
-  .equalprice
-  {
-  	background-color: #9bff9b;
-  }
-  
-  .lowprice
-  {
-  	background-color: #a6a6ff;
-  }
+
+table {
+	margin: 0 auto; /* or margin: 0 auto 0 auto */
+}
+
+.addfrm td {
+	padding: 5px;
+}
+
+header {
+	line-height: 100px;
+	text-align: center;
+	font-family: verdana;
+	font-size: 25px;
+	font-weight: bold;
+	background-color: #008080;
+	color: white;
+}
+
+input[type='button'] {
+	width: 100px;
+	height: 40px;
+	background-color: #005b5b;
+	color: white;
+	border-style: solid;
+	border-color: white;
+}
+
+input[type='button']:hover {
+	color: yellow;
+	border-color: yellow;
+}
+
+input[type='checkbox'] {
+	width: 20px !important;
+	height: 20px !important;
+	margin: 3px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	outline: 2px solid lightblue;
+	box-shadow: none;
+	font-size: 2em;
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
+}
+
+tr {
+	background-color: #d7dbe8;
+}
+
+thead tr {
+	background-color: #005151;
+	color: white;
+	font-size: 18px;
+}
+
+td {
+	padding: 10px;
+}
+
+.error {
+	display: inline-block;
+	position: absolute;
+	font-size: 14px;
+	background-color: white;
+	border: 1px solid red;
+	margin-left: 10px;
+	padding: 2px 5px 2px 5px;
+	color: red;
+}
+
+.even {
+	background-color: #c9deef;
+}
+
+.odd {
+	background-color: #95bfe1;
+}
+
+.highprice {
+	background-color: #ff6a6a;
+}
+
+.equalprice {
+	background-color: #9bff9b;
+}
+
+.lowprice {
+	background-color: #a6a6ff;
+}
