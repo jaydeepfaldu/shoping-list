@@ -12,6 +12,38 @@ app.run(function($rootScope){
 });
 
 
+
+app.directive('stringToNumber', function() {
+	  return {
+	    require: 'ngModel',
+	    link: function(scope, element, attrs, ngModel) {
+	      ngModel.$parsers.push(function(value) {
+	        return '' + value;
+	      });
+	      ngModel.$formatters.push(function(value) {
+	        return parseFloat(value);
+	      });
+	    }
+	  };
+	});
+
+app.directive('isNumber', function () {
+	return {
+		require: 'ngModel',
+		link: function (scope) {	
+			scope.$watch('lst_shoplist.modifyPrice', function(newValue,oldValue) {
+                var arr = String(newValue).split("");
+                if (arr.length === 0) return;
+                if (arr.length === 1 && (arr[0] == '-' || arr[0] === '.' )) return;
+                if (arr.length === 2 && newValue === '-.') return;
+                if (isNaN(newValue)) {
+                    scope.lst_shoplist.modifyPrice = oldValue;
+                }
+            });
+		}
+	};
+});
+
 app.filter("customCurrency", function (numberFilter) {
 	  function isNumeric(value) {
 	    return (!isNaN(parseFloat(value)) && isFinite(value));
@@ -76,8 +108,8 @@ app.controller("s1",function($scope){
 	$scope.txtItemAspctPrice = 0;
 	$scope.txtItemAspctTotalPrice = 0;
 	$scope.txtItemInBucket = 0;
-	$scope.txtItemModifyPrice = 0;
-	$scope.txtItemModifyTotalPrice = 0;
+	$scope.txtItemModifyPrice = 0.0;
+	$scope.txtItemModifyTotalPrice = 0.0;
 	
 	
 	var lists = angular.fromJson( localStorage.getItem("itemStore") );   
@@ -226,9 +258,12 @@ app.controller("s2",function($scope){
 app.controller("s3",function($scope){
 	
 	
+	$scope.wks =  {number: 1, validity: true}
+	
 	$scope.netprices = 0;
 	$scope.totalqty = 0;
 	$scope.totalitem = 0;
+	$scope.netactualprices = 0;
 	
 	var lists = angular.fromJson( localStorage.getItem("itemStore") );
 	
@@ -241,15 +276,16 @@ app.controller("s3",function($scope){
       for (var i = 0; i < lists.length; i++) {
         
     	  if (lists[i].itemId ) {
-    		  if(lists[i].inBucket == 1)
-    			  {
+    		 
               	$scope.shopingListprice.push(lists[i]);
+              	
+              if(lists[i].inBucket == 1)
+   			  {
               	$scope.netprices = $scope.netprices + lists[i].aspectTotalPrice ;
-            	$scope.totalqty = $scope.totalqty +lists[i].qty;
-            	
-            	
+            	$scope.totalqty = $scope.totalqty +lists[i].qty;            	
+            	$scope.netactualprices = $scope.netactualprices + lists[i].modifyTotalPrice;
             	cnt++;
-    			  }
+    		  }
             }
 
         
@@ -259,10 +295,10 @@ app.controller("s3",function($scope){
       
     }
 	
-    $scope.updatePrice = function(itemId,mvalue)
+    $scope.updatePrice = function(itemId, mvalue)
     {
     	console.log(itemId);
-    	$scope.shopingListprice[itemId-1].modifyPrice = mvalue;    	
+    	//$scope.shopingListprice[itemId-1].modifyPrice = mvalue;    	
     	
     	localStorage.setItem('itemStore',angular.toJson($scope.shopingListprice));
     };
