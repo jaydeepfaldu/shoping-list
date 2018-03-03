@@ -8,23 +8,23 @@
 
 <link rel="stylesheet" type="text/css" href="css/style.css" >
 
+
 </head>
 <body ng-app="shopapp">
+
 <header>
 
 Shoping List
 
 </header>
 
-
 <center>
-<p style="background-color: green; line-height: 30px; color:white;">Add Item Form</p>
-<a href="home.html"> Add Item In List </a> | <a href="instore.html"> In Bucket </a> | <a href="compare_price.html"> Compare Price </a> | <a href="" ng-click="clearData()"> Clear Data </a>
+ <p style="background-color: green; line-height: 30px; color:white;">Add Item Form</p>
+ <a href="home.html"> Add Item In List </a> | <a href="instore.html"> In Bucket </a> | <a href="compare_price.html"> Compare Price </a> | <a href="" ng-click="clearData()"> Clear Data </a> 
 </center>
 
 
-
-<div  ng-controller="s3">
+<div ng-controller="s2">
 
 <table class="tblShowList" style="width: 80%; text-align: center;">
 		<thead>
@@ -50,14 +50,14 @@ Shoping List
 				In Bucket
 			</td>		
 		</thead>
-		<tr ng-repeat="lst_shoplist in shopingListprice" align="center">
+		<tr ng-repeat="lst_shoplist in shopingListInBucker" align="center">
 			<td> {{lst_shoplist.itemId}} </td>
 			<td> {{lst_shoplist.itemName}} </td>
 			<td> {{lst_shoplist.storeName}} </td>
 			<td> {{lst_shoplist.qty}} </td>
 			<td> {{lst_shoplist.aspectPrice}} </td>
 			<td> {{lst_shoplist.aspectTotalPrice}} </td>
-			<td> <input type="checkbox"  ng-click="inBucket(lst_shoplist.itemId, lst_shoplist.inBucket)"></td>			
+			<td> <input type="checkbox" ng-checked="lst_shoplist.inBucket" ng-click="inBucket(lst_shoplist.itemId, lst_shoplist.inBucket)"></td>			
 		</tr>
 	</table>
 
@@ -65,7 +65,6 @@ Shoping List
 
 <script src="js/shopapp.js"></script>
 <script src="js/shopcontrol.js"></script>
-
 
 </body>
 </html>

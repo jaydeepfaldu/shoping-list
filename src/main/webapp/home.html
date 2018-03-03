@@ -9,19 +9,20 @@
 <link rel="stylesheet" type="text/css" href="css/style.css" >
 
 </head>
-<body>
+<body ng-app="shopapp">
 <header>
 
 Shoping List
 
 </header>
 
-<div ng-app="shopapp" ng-controller="s1" style="">
+
 <center>
 <p style="background-color: green; line-height: 30px; color:white;">Add Item Form</p>
-<a href="instore.html"> Next </a>
+<a href="home.html"> Add Item In List </a> | <a href="instore.html"> In Bucket </a> | <a href="compare_price.html"> Compare Price </a> | <a href="" ng-click="clearData()"> Clear Data </a>
 </center>
 
+<div  ng-controller="s1" >
 <table class="addfrm">
 
 	<tr>
