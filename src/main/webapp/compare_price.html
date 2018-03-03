@@ -4,19 +4,28 @@
 <meta charset="ISO-8859-1">
 <title>Store List Application</title>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="css/style.css" >
+<link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
 <body ng-app="shopapp">
-<header>
-
-Shoping List
-
-</header>
+	<header> Shoping List </header>
 
 
+<<<<<<< HEAD
+	<center>
+		<div class="title">Modify Price and Compare with Aspect Price</div>
+		<ul>
+			<li><a href="home.html"> Create List </a></li>
+			<li><a href="instore.html"> In Bucket </a></li>
+			<li><a href="compare_price.html"> Compare Price </a></li>
+			<li style="float: right"><a class="active" href=""
+				ng-click="clearData()"> Clear Data </a></li>
+		</ul>
+	</center>
+=======
 <center>
 <div class="title">Modify Price and Compare with Aspect Price </div>
 <ul>
@@ -26,9 +35,15 @@ Shoping List
   <li style="float:right"><a class="active"href="" ng-click="clearData()"> Clear Data </a></li>
 </ul> 
 </center>
+>>>>>>> branch 'master' of https://github.com/jaydeepfaldu/shoping-list.git
 
 
 
+<<<<<<< HEAD
+	<div ng-controller="s3">
+		<div style="display: inline; float: left; width: 25%">
+			<table style="text-align: center;">
+=======
 <div  ng-controller="s3">
 <div  style="display: inline; float: left; width: 25%" >
 <table style="text-align: center;">
@@ -77,9 +92,19 @@ Shoping List
 
  
 </div>
+>>>>>>> branch 'master' of https://github.com/jaydeepfaldu/shoping-list.git
 
+<<<<<<< HEAD
+				<thead>
+					<tr>
+						<td colspan="4">Prices Analysis</td>
+=======
 <div style="display: inline; float: right; width: 75%" >
+>>>>>>> branch 'master' of https://github.com/jaydeepfaldu/shoping-list.git
 
+<<<<<<< HEAD
+					</tr>
+=======
 <table class="tblShowList" style="text-align: center;">
 		
 		<thead >
@@ -134,9 +159,92 @@ Shoping List
 	</table>
 </div>
 </div>
+>>>>>>> branch 'master' of https://github.com/jaydeepfaldu/shoping-list.git
 
-<script src="js/shopapp.js"></script>
-<script src="js/shopcontrol.js"></script>
+					<td>Total Item.</td>
+					<td>Total Qty.</td>
+					<td>Total Aspect Amount.</td>
+					<td>Total Actual Amount.</td>
+				</thead>
+				<tr align="center">
+					<td>{{totalitem}}</td>
+					<td>{{totalqty}}</td>
+					<td>{{netprices | customCurrency:"zl.":".":" ":2:false}}</td>
+					<td
+						class="{{netactualprices == netprices ? 'equalprice': netactualprices > netprices ? 'highprice' : 'lowprice' }}">
+						{{netactualprices | customCurrency:"zl.":".":" ":2:false}}</td>
+				</tr>
+
+
+
+			</table>
+
+
+
+
+		</div>
+
+		<div style="display: inline; float: right; width: 75%">
+
+			<table class="tblShowList" style="text-align: center;">
+
+				<thead>
+					<tr align="left">
+						<td colspan="9">Search Item on Store : <select
+							name="txtStoreName" ng-model="txtStoreName"
+							ng-options="item.name as item.name for item in storeList"
+							on-click="searchStore()">
+								<option value="">All
+								<option>
+						</select>
+						</td>
+					</tr>
+
+
+				</thead>
+
+				<thead>
+					<td>Item ID</td>
+					<td>Item Name</td>
+					<td>Store Name</td>
+					<td>Item Qty.</td>
+					<td>Item Aspected Price</td>
+					<td>Aspected Total Price</td>
+					<td>Modify Price</td>
+					<td>Modifed Total Price</td>
+					<td></td>
+				</thead>
+
+				<tr
+					ng-repeat="lst_shoplist in shopingListprice | filter: {inBucket: 1} | filter:{storeName: !!txtStoreName?txtStoreName: undefined} "
+					align="center"
+					ng-class="lst_shoplist.modifyPrice == lst_shoplist.aspectPrice ? 'equalprice' : lst_shoplist.modifyPrice > lst_shoplist.aspectPrice  ? 'highprice' : 'lowprice'">
+					<td>{{lst_shoplist.itemId}}</td>
+					<td>{{lst_shoplist.itemName}}</td>
+					<td>{{lst_shoplist.storeName}}</td>
+					<td>{{lst_shoplist.qty}}</td>
+					<td>{{lst_shoplist.aspectPrice | customCurrency:"zl":".":"
+						":2:false}}</td>
+					<td>{{lst_shoplist.aspectTotalPrice |
+						customCurrency:"zl":".":" ":2:false}}</td>
+
+
+					<td><input type="number" style="width: 50px;" string-to-number
+						is-number ng-model="lst_shoplist.modifyPrice"> zl <span
+						ng-show="!wks.validity">Value is invalid</span></td>
+					<td>{{lst_shoplist.modifyTotalPrice = lst_shoplist.qty *
+						lst_shoplist.modifyPrice | customCurrency:"zl":".":" ":2:false}}</td>
+
+					<td><input type="button" value="Update"
+						ng-click="updatePrice(lst_shoplist.itemId, lst_shoplist.modifyPrice)"></td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+
+	<script src="js/shopapp.js"></script>
+	<script src="js/shopcontrol.js"></script>
 
 
 </body>

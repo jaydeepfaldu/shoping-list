@@ -4,19 +4,28 @@
 <meta charset="ISO-8859-1">
 <title>Store List Application</title>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="css/style.css" >
+<link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
 <body ng-app="shopapp">
-<header>
-
-Shoping List
-
-</header>
+	<header> Shoping List </header>
 
 
+<<<<<<< HEAD
+	<center>
+		<div class="title">Create Item List</div>
+		<ul>
+			<li><a href="home.html"> Create List </a></li>
+			<li><a href="instore.html"> In Bucket </a></li>
+			<li><a href="compare_price.html"> Compare Price </a></li>
+			<li style="float: right"><a class="active" href=""
+				ng-click="clearData()"> Clear Data </a></li>
+		</ul>
+	</center>
+=======
 <center>
 <div class="title">Create Item List</div>
  <ul>
@@ -26,156 +35,123 @@ Shoping List
   <li style="float:right"><a class="active"href="" ng-click="clearData()"> Clear Data </a></li>
 </ul> 
 </center>
+>>>>>>> branch 'master' of https://github.com/jaydeepfaldu/shoping-list.git
 
-<div  ng-controller="s1" >
-<div  style="display: inline; float: left; width: 30%" >
+	<div ng-controller="s1">
+		<div style="display: inline; float: left; width: 30%">
 
-<form name="itemfrm">
-<table class="addfrm" >
-	<tr>
-		<td align="right">
-			Item ID :  
-		</td>
-		<td>
-			{{txtItemId}}
-		</td>				
-	</tr>
-	<tr>
-		<td align="right">
-			Item Name :  
-		</td>
-		<td>
-			<input type="text" name="txtItemName" ng-model="txtItemName" ng-required="true" >			
-			<span class="error"  ng-show="itemfrm.txtItemName.$empty || itemfrm.txtItemName.$touched && itemfrm.txtItemName.$error.required">Item name is required</span>
-		</td>					
-	</tr>
-	<tr>		
-		<td align="right">
-			Store Name :  
-		</td>
-		<td>
-			<select name="txtStoreName" ng-model="txtStoreName" ng-options="item.name as item.name for item in storeList"  ng-required="true">
-				<option value="">select a value<option> 
-			</select>
-			<span class="error" ng-show="itemfrm.txtStoreName.$touched && itemfrm.txtStoreName.$error.required">Store name is required</span>
-		</td>				
-	</tr>
-	
-	<tr>		
-		<td align="right">
-			Item Qty :  
-		</td>
-		<td>
-			<input type="number" name="txtItemQty" min="1"  ng-model="txtItemQty"  ng-required="true">
-			<span class="error" ng-show="itemfrm.txtItemQty.$touched && itemfrm.txtItemQty.$invalid">Not a valid value</span>
-			<span class="error" ng-show="itemfrm.txtItemQty.$touched && itemfrm.txtItemQty.$error.required">Item qty is required</span>
-			
-		</td>				
-	</tr>
-	
-	
-	<tr>		
-		<td align="right">
-			Aspected Item Price :  
-		</td>
-		<td>
-			<input type="number" name="txtItemAspctPrice" min="1" ng-model="txtItemAspctPrice" ng-required="true">
-			<span class="error" ng-show="itemfrm.txtItemQty.$touched && itemfrm.txtItemAspctPrice.$invalid">Not a valid value</span>
-			<span class="error" ng-show="itemfrm.txtItemQty.$touched && itemfrm.txtItemAspctPrice.$error.required">Item Price is required</span>
-			zl.
-		</td>				
-	</tr>
-	<tr>		
-		<td align="right">
-			Aspected Total Price :  
-		</td>
-		<td>
-			{{txtItemAspctTotalPrice = txtItemQty * txtItemAspctPrice | customCurrency:"zl":".":" ":2:false}}
-		</td>				
-	</tr>
-		
-	<tr>
-		<td>
-					
-		</td>
-		<td>
-			<input type="button" ng-click="cleanForm()" value="Clean">	
-			<input type="button" ng-click="itemfrm.$valid && addItem()" value="Add Item">			
-		</td>
-	</tr>
-</table>
- </form>
- <br>
- <table>
- <thead>
- 	<td>
- 	Total Item.
- 	</td>
- 	<td>
- 	Total Qty.
- 	</td>
- 	<td>
- 	Total Amount.
- 	</td>
- </thead>
- <tr align="center">
- 	<td>
- 		{{txtItemId-1}}
- 	</td>
- 	<td>
- 		{{totalqty}}
- 	</td>
- 	<td>
- 		{{netprices | customCurrency:"zl":".":" ":2:false}}
- 	</td>
- </tr>
- </table>
- 
- 
- 
- </div>
-			
- 
- 
-<div style="display: inline; float: right; width: 70%" >	
-	<table style="text-align: center;">
-		<thead>
-			<td>
-				Item ID
-			</td>
-			<td>
-				Item Name
-			</td>		
-			<td>
-				Store Name
-			</td>			
-			<td>
-				Item Qty.
-			</td>		
-			<td>
-				Item Aspected Price
-			</td>				
-			<td>
-				Aspected Total Price
-			</td>			
-		</thead>
-		<tr ng-repeat="lst_shoplist in shopingList" align="center" ng-class="$index % 2 == 1 ? 'even' : 'odd'">
-			<td> {{lst_shoplist.itemId}} </td>
-			<td> {{lst_shoplist.itemName}} </td>
-			<td> {{lst_shoplist.storeName}} </td>
-			<td> {{lst_shoplist.qty}} </td>
-			<td> {{lst_shoplist.aspectPrice | customCurrency:"zl":".":" ":2:false}} </td>
-			<td> {{lst_shoplist.aspectTotalPrice | customCurrency:"zl":".":" ":2:false}} </td>
-				
-					
-		</tr>
-	</table>
+			<form name="itemfrm">
+				<table class="addfrm">
+					<tr>
+						<td align="right">Item ID :</td>
+						<td>{{txtItemId}}</td>
+					</tr>
+					<tr>
+						<td align="right">Item Name :</td>
+						<td><input type="text" name="txtItemName"
+							ng-model="txtItemName" ng-required="true"> <span
+							class="error"
+							ng-show="itemfrm.txtItemName.$empty || itemfrm.txtItemName.$touched && itemfrm.txtItemName.$error.required">Item
+								name is required</span></td>
+					</tr>
+					<tr>
+						<td align="right">Store Name :</td>
+						<td><select name="txtStoreName" ng-model="txtStoreName"
+							ng-options="item.name as item.name for item in storeList"
+							ng-required="true">
+								<option value="">select a value
+								<option>
+						</select> <span class="error"
+							ng-show="itemfrm.txtStoreName.$touched && itemfrm.txtStoreName.$error.required">Store
+								name is required</span></td>
+					</tr>
+
+					<tr>
+						<td align="right">Item Qty :</td>
+						<td><input type="number" name="txtItemQty" min="1"
+							ng-model="txtItemQty" ng-required="true"> <span
+							class="error"
+							ng-show="itemfrm.txtItemQty.$touched && itemfrm.txtItemQty.$invalid">Not
+								a valid value</span> <span class="error"
+							ng-show="itemfrm.txtItemQty.$touched && itemfrm.txtItemQty.$error.required">Item
+								qty is required</span></td>
+					</tr>
+
+
+					<tr>
+						<td align="right">Aspected Item Price :</td>
+						<td><input type="number" name="txtItemAspctPrice" min="1"
+							ng-model="txtItemAspctPrice" ng-required="true"> <span
+							class="error"
+							ng-show="itemfrm.txtItemQty.$touched && itemfrm.txtItemAspctPrice.$invalid">Not
+								a valid value</span> <span class="error"
+							ng-show="itemfrm.txtItemQty.$touched && itemfrm.txtItemAspctPrice.$error.required">Item
+								Price is required</span> zl.</td>
+					</tr>
+					<tr>
+						<td align="right">Aspected Total Price :</td>
+						<td>{{txtItemAspctTotalPrice = txtItemQty * txtItemAspctPrice
+							| customCurrency:"zl":".":" ":2:false}}</td>
+					</tr>
+
+					<tr>
+						<td></td>
+						<td><input type="button" ng-click="cleanForm()" value="Clean">
+							<input type="button" ng-click="itemfrm.$valid && addItem()"
+							value="Add Item"></td>
+					</tr>
+				</table>
+			</form>
+			<br>
+			<table>
+				<thead>
+					<td>Total Item.</td>
+					<td>Total Qty.</td>
+					<td>Total Amount.</td>
+				</thead>
+				<tr align="center">
+					<td>{{txtItemId-1}}</td>
+					<td>{{totalqty}}</td>
+					<td>{{netprices | customCurrency:"zl":".":" ":2:false}}</td>
+				</tr>
+			</table>
+
+
+
+		</div>
+
+
+
+		<div style="display: inline; float: right; width: 70%">
+			<table style="text-align: center; width: 100%">
+				<thead>
+					<td>Item ID</td>
+					<td>Item Name</td>
+					<td>Store Name</td>
+					<td>Item Qty.</td>
+					<td>Item Aspected Price</td>
+					<td>Aspected Total Price</td>
+				</thead>
+				<tr ng-repeat="lst_shoplist in shopingList" align="center"
+					ng-class="$index % 2 == 1 ? 'even' : 'odd'">
+					<td>{{lst_shoplist.itemId}}</td>
+					<td>{{lst_shoplist.itemName}}</td>
+					<td>{{lst_shoplist.storeName}}</td>
+					<td>{{lst_shoplist.qty}}</td>
+					<td>{{lst_shoplist.aspectPrice | customCurrency:"zl":".":"
+						":2:false}}</td>
+					<td>{{lst_shoplist.aspectTotalPrice |
+						customCurrency:"zl":".":" ":2:false}}</td>
+
+
+				</tr>
+			</table>
+		</div>
 	</div>
-</div>
 
 
-<script src="js/shopapp.js"></script>
-<script src="js/shopcontrol.js"></script>
+	<script src="js/shopapp.js"></script>
+	<script src="js/shopcontrol.js"></script>
 
 </body>
 </html>
