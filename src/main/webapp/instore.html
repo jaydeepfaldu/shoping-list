@@ -19,8 +19,8 @@ Shoping List
 </header>
 
 <center>
- <p style="background-color: green; line-height: 30px; color:white;">Add Item Form</p>
- <a href="home.html"> Add Item In List </a> | <a href="instore.html"> In Bucket </a> | <a href="compare_price.html"> Compare Price </a> | <a href="" ng-click="clearData()"> Clear Data </a> 
+ <div class="title"> Add Items in Bucket </div>
+ <a href="home.html"> Create List </a> | <a href="instore.html"> In Bucket </a> | <a href="compare_price.html"> Compare Price </a> | <a href="" ng-click="clearData()"> Clear Data </a> 
 </center>
 
 
@@ -50,7 +50,7 @@ Shoping List
 				In Bucket
 			</td>		
 		</thead>
-		<tr ng-repeat="lst_shoplist in shopingListInBucker" align="center">
+		<tr ng-repeat="lst_shoplist in shopingListInBucker" align="center" ng-class="$index % 2 == 1 ? 'even' : 'odd'">
 			<td> {{lst_shoplist.itemId}} </td>
 			<td> {{lst_shoplist.itemName}} </td>
 			<td> {{lst_shoplist.storeName}} </td>

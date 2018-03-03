@@ -10,6 +10,10 @@ app.run(function($rootScope){
 });
 
 
+/**
+ * this controller used in home.html
+ */
+
 
 app.controller("s1",function($scope){
 
@@ -100,7 +104,9 @@ app.controller("s1",function($scope){
 });
 
 
-
+/**
+ * this controller used in instore.html
+ */
 
 
 
@@ -132,6 +138,8 @@ app.controller("s2",function($scope){
     
     $scope.inBucket = function(itemId, inbkt)
     {
+    	console.log(itemId);
+    	
     	if(inbkt == 1)
     	{
     		$scope.shopingListInBucker[itemId-1].inBucket = 0;
@@ -149,6 +157,11 @@ app.controller("s2",function($scope){
     };    
 	  	
 });
+
+
+/**
+ * this controller used in compare_price.html
+ */
 
 
 
@@ -176,6 +189,16 @@ app.controller("s3",function($scope){
       }
     }
 	
+    $scope.updatePrice = function(itemId,mvalue)
+    {
+    	console.log(itemId);
+    	$scope.shopingListprice[itemId-1].modifyPrice = mvalue;    	
+    	
+    	localStorage.setItem('itemStore',angular.toJson($scope.shopingListprice));
+    };
+    
+    
+    
 });
 
 

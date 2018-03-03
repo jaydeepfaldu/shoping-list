@@ -18,8 +18,8 @@ Shoping List
 
 
 <center>
-<p style="background-color: green; line-height: 30px; color:white;">Add Item Form</p>
-<a href="home.html"> Add Item In List </a> | <a href="instore.html"> In Bucket </a> | <a href="compare_price.html"> Compare Price </a> | <a href="" ng-click="clearData()"> Clear Data </a>
+<div class="title">Modify Price and Compare with Aspect Price </div>
+<a href="home.html"> Create List </a> | <a href="instore.html"> In Bucket </a> | <a href="compare_price.html"> Compare Price </a> | <a href="" ng-click="clearData()"> Clear Data </a>
 </center>
 
 
@@ -27,7 +27,7 @@ Shoping List
 <div  ng-controller="s3">
 
 <table class="tblShowList" style="width: 80%; text-align: center;">
-		<thead>
+		<thead style="background-color: red;">
 			<td>
 				Item ID
 			</td>
@@ -47,17 +47,25 @@ Shoping List
 				Aspected Total Price
 			</td>	
 			<td>
-				In Bucket
+				Modify Price
+			</td>		
+			<td>
+				Modifed Total Price
+			</td>
+			<td>
 			</td>		
 		</thead>
-		<tr ng-repeat="lst_shoplist in shopingListprice" align="center">
+		<tr ng-repeat="lst_shoplist in shopingListprice" align="center" ng-class="$index % 2 == 1 ? 'even' : 'odd'">
 			<td> {{lst_shoplist.itemId}} </td>
 			<td> {{lst_shoplist.itemName}} </td>
 			<td> {{lst_shoplist.storeName}} </td>
 			<td> {{lst_shoplist.qty}} </td>
 			<td> {{lst_shoplist.aspectPrice}} </td>
 			<td> {{lst_shoplist.aspectTotalPrice}} </td>
-			<td> <input type="checkbox"  ng-click="inBucket(lst_shoplist.itemId, lst_shoplist.inBucket)"></td>			
+			<td> <input type="number"  ng-model="lst_shoplist.modifyPrice" > </td>
+			<td> {{lst_shoplist.modifyTotalPrice = lst_shoplist.qty * lst_shoplist.modifyPrice}}</td>
+			
+			<td> <input type="button"  value="Update" ng-click="updatePrice(lst_shoplist.itemId, lst_shoplist.modifyPrice)"></td>			
 		</tr>
 	</table>
 

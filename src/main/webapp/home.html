@@ -18,10 +18,10 @@ Shoping List
 
 
 <center>
-<p style="background-color: green; line-height: 30px; color:white;">Add Item Form</p>
-<a href="home.html"> Add Item In List </a> | <a href="instore.html"> In Bucket </a> | <a href="compare_price.html"> Compare Price </a> | <a href="" ng-click="clearData()"> Clear Data </a>
+<div class="title">Create Item List</div>
+<a href="home.html"> Create List </a> | <a href="instore.html"> In Bucket </a> | <a href="compare_price.html"> Compare Price </a> | <a href="" ng-click="clearData()"> Clear Data </a>
 </center>
-
+<form name="itemfrm">
 <div  ng-controller="s1" >
 <table class="addfrm">
 
@@ -38,7 +38,8 @@ Shoping List
 			Item Name :  
 		</td>
 		<td>
-			<input type="text" ng-model="txtItemName">
+			<input type="text" name="txtItemName" ng-model="txtItemName" ng-required="true" >			
+			<span class="error"  ng-show="itemfrm.txtItemName.$empty || itemfrm.txtItemName.$touched && itemfrm.txtItemName.$error.required">Item name is required</span>
 		</td>					
 	</tr>
 	<tr>		
@@ -46,11 +47,10 @@ Shoping List
 			Store Name :  
 		</td>
 		<td>
-			<select ng-model="txtStoreName" >
-				<option ng-repeat="lst_store in storeList">
-					{{lst_store.name}}
-				</option> 
+			<select name="txtStoreName" ng-model="txtStoreName" ng-options="item.name as item.name for item in storeList"  ng-required="true">
+				<option value="">select a value<option> 
 			</select>
+			<span class="error" ng-show="itemfrm.txtStoreName.$touched && itemfrm.txtStoreName.$error.required">Store name is required</span>
 		</td>				
 	</tr>
 	
@@ -59,7 +59,10 @@ Shoping List
 			Item Qty :  
 		</td>
 		<td>
-			<input type="text"  ng-model="txtItemQty"  >
+			<input type="number" name="txtItemQty" min="1"  ng-model="txtItemQty"  ng-required="true">
+			<span class="error" ng-show="itemfrm.txtItemQty.$touched && itemfrm.txtItemQty.$invalid">Not a valid value</span>
+			<span class="error" ng-show="itemfrm.txtItemQty.$touched && itemfrm.txtItemQty.$error.required">Item qty is required</span>
+			
 		</td>				
 	</tr>
 	
@@ -69,7 +72,9 @@ Shoping List
 			Aspected Item Price :  
 		</td>
 		<td>
-			<input type="text" ng-model="txtItemAspctPrice">
+			<input type="number" name="txtItemAspctPrice" ng-model="txtItemAspctPrice" ng-required="true">
+			<span class="error" ng-show="itemfrm.txtItemAspctPrice.$invalid">Not a valid value</span>
+			<span class="error" ng-show="itemfrm.txtItemAspctPrice.$error.required">Item Price is required</span>
 		</td>				
 	</tr>
 	<tr>		
@@ -87,13 +92,13 @@ Shoping List
 		</td>
 		<td>
 			<input type="button" ng-click="cleanForm()" value="Clean">	
-			<input type="button" ng-click="addItem()" value="Add Item">			
+			<input type="button" ng-click="itemfrm.$valid && addItem()" value="Add Item">			
 		</td>
 	</tr>
 </table>
- 
+ </form>
 	
-	<table class="tblShowList">
+	<table style="width: 80%; text-align: center;">
 		<thead>
 			<td>
 				Item ID
@@ -114,7 +119,7 @@ Shoping List
 				Aspected Total Price
 			</td>			
 		</thead>
-		<tr ng-repeat="lst_shoplist in shopingList" align="center">
+		<tr ng-repeat="lst_shoplist in shopingList" align="center" ng-class="$index % 2 == 1 ? 'even' : 'odd'">
 			<td> {{lst_shoplist.itemId}} </td>
 			<td> {{lst_shoplist.itemName}} </td>
 			<td> {{lst_shoplist.storeName}} </td>
