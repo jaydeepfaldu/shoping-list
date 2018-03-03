@@ -5,6 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   
+<<<<<<< HEAD
   
    <properties>
   	<failOnMissingWebXml>false</failOnMissingWebXml>
@@ -24,5 +25,10 @@
     </plugins>
   </build>
   
+=======
+  <properties>
+  	<failOnMissingWebXml>false</failOnMissingWebXml>
+  </properties>
+>>>>>>> branch 'master' of https://github.com/jaydeepfaldu/shoping-list.git
   
 </project>
