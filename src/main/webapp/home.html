@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Store List Application</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/style.css" >
+
+</head>
+<body>
+<header>
+
+Shoping List
+
+</header>
+
+<div ng-app="shopapp" ng-controller="s1" style="">
+<center>
+<p style="background-color: green; line-height: 30px; color:white;">Add Item Form</p>
+<a href="instore.html"> Next </a>
+</center>
+
+<table class="addfrm">
+
+	<tr>
+		<td align="right">
+			Item ID :  
+		</td>
+		<td>
+			{{txtItemId}}
+		</td>				
+	</tr>
+	<tr>
+		<td align="right">
+			Item Name :  
+		</td>
+		<td>
+			<input type="text" ng-model="txtItemName">
+		</td>					
+	</tr>
+	<tr>		
+		<td align="right">
+			Store Name :  
+		</td>
+		<td>
+			<select ng-model="txtStoreName" >
+				<option ng-repeat="lst_store in storeList">
+					{{lst_store.name}}
+				</option> 
+			</select>
+		</td>				
+	</tr>
+	
+	<tr>		
+		<td align="right">
+			Item Qty :  
+		</td>
+		<td>
+			<input type="text"  ng-model="txtItemQty"  >
+		</td>				
+	</tr>
+	
+	
+	<tr>		
+		<td align="right">
+			Aspected Item Price :  
+		</td>
+		<td>
+			<input type="text" ng-model="txtItemAspctPrice">
+		</td>				
+	</tr>
+	<tr>		
+		<td align="right">
+			Aspected Total Price :  
+		</td>
+		<td>
+			{{txtItemAspctTotalPrice = txtItemQty * txtItemAspctPrice | currency}}
+		</td>				
+	</tr>
+		
+	<tr>
+		<td>
+					
+		</td>
+		<td>
+			<input type="button" ng-click="cleanForm()" value="Clean">	
+			<input type="button" ng-click="addItem()" value="Add Item">			
+		</td>
+	</tr>
+</table>
+ 
+	
+	<table class="tblShowList">
+		<thead>
+			<td>
+				Item ID
+			</td>
+			<td>
+				Item Name
+			</td>		
+			<td>
+				Store Name
+			</td>			
+			<td>
+				Item Qty.
+			</td>		
+			<td>
+				Item Aspected Price
+			</td>				
+			<td>
+				Aspected Total Price
+			</td>			
+		</thead>
+		<tr ng-repeat="lst_shoplist in shopingList" align="center">
+			<td> {{lst_shoplist.itemId}} </td>
+			<td> {{lst_shoplist.itemName}} </td>
+			<td> {{lst_shoplist.storeName}} </td>
+			<td> {{lst_shoplist.qty}} </td>
+			<td> {{lst_shoplist.aspectPrice}} </td>
+			<td> {{lst_shoplist.aspectTotalPrice}} </td>
+						
+		</tr>
+	</table>
+
+
+
+
+</div>
+
+
+<script src="js/shopapp.js"></script>
+<script src="js/shopcontrol.js"></script>
+
+</body>
+</html>

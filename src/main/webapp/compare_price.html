@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Store List Application</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/style.css" >
+
+</head>
+<body>
+<header>
+
+Shoping List
+
+</header>
+
+
+<center>
+<p style="background-color: green; line-height: 30px; color:white;">Add Item Form</p>
+<a href="instore.html"> previous </a>
+</center>
+
+
+
+<div ng-app="shopapp" ng-controller="s3">
+
+<table class="tblShowList" style="width: 80%; text-align: center;">
+		<thead>
+			<td>
+				Item ID
+			</td>
+			<td>
+				Item Name
+			</td>		
+			<td>
+				Store Name
+			</td>			
+			<td>
+				Item Qty.
+			</td>		
+			<td>
+				Item Aspected Price
+			</td>				
+			<td>
+				Aspected Total Price
+			</td>	
+			<td>
+				In Bucket
+			</td>		
+		</thead>
+		<tr ng-repeat="lst_shoplist in shopingListprice" align="center">
+			<td> {{lst_shoplist.itemId}} </td>
+			<td> {{lst_shoplist.itemName}} </td>
+			<td> {{lst_shoplist.storeName}} </td>
+			<td> {{lst_shoplist.qty}} </td>
+			<td> {{lst_shoplist.aspectPrice}} </td>
+			<td> {{lst_shoplist.aspectTotalPrice}} </td>
+			<td> <input type="checkbox"  ng-click="inBucket(lst_shoplist.itemId, lst_shoplist.inBucket)"></td>			
+		</tr>
+	</table>
+
+</div>
+
+<script src="js/shopapp.js"></script>
+<script src="js/shopcontrol.js"></script>
+
+
+</body>
+</html>
