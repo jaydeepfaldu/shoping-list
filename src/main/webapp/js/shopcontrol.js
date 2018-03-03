@@ -1,5 +1,7 @@
 
 app.run(function($rootScope){
+	
+		
 	$rootScope.clearData = function(){
 		localStorage.clear();
 		location.reload();
@@ -10,6 +12,48 @@ app.run(function($rootScope){
 });
 
 
+app.filter("customCurrency", function (numberFilter) {
+	  function isNumeric(value) {
+	    return (!isNaN(parseFloat(value)) && isFinite(value));
+	  }
+	 
+	  return function (inputNumber, currencySymbol, decimalSeparator, thousandsSeparator, decimalDigits, prefixWithSymbol) {
+	    if (isNumeric(inputNumber)) {
+	      // Default values for the optional arguments
+	      currencySymbol = (typeof currencySymbol === "undefined") ? "$" : currencySymbol;
+	      decimalSeparator = (typeof decimalSeparator === "undefined") ? "." : decimalSeparator;
+	      thousandsSeparator = (typeof thousandsSeparator === "undefined") ? "," : thousandsSeparator;
+	      decimalDigits = (typeof decimalDigits === "undefined" || !isNumeric(decimalDigits)) ? 2 : decimalDigits;
+	      prefixWithSymbol = (typeof prefixWithSymbol === "undefined") ? true : prefixWithSymbol;
+	 
+	      if (decimalDigits < 0) decimalDigits = 0;
+	 
+	      // Format the input number through the number filter
+	      // The resulting number will have "," as a thousands separator
+	      // and "." as a decimal separator.
+	      var formattedNumber = numberFilter(inputNumber, decimalDigits);
+	 
+	      // Extract the integral and the decimal parts
+	      var numberParts = formattedNumber.split(".");
+	       
+	      // Replace the "," symbol in the integral part
+	      // with the specified thousands separator.
+	      numberParts[0] = numberParts[0].split(",").join(thousandsSeparator);
+	 
+	      // Compose the final result
+	      var result = numberParts[0];
+	 
+	      if (numberParts.length == 2) {
+	        result += decimalSeparator + numberParts[1];
+	      }
+	 
+	      return (prefixWithSymbol ? currencySymbol + " " : "") + result + (prefixWithSymbol ? "" : " " + currencySymbol);
+	    } else {
+	      return inputNumber;
+	    }
+	  };
+	});
+
 /**
  * this controller used in home.html
  */
@@ -17,6 +61,9 @@ app.run(function($rootScope){
 
 app.controller("s1",function($scope){
 
+	$scope.netprices = 0;
+	$scope.totalqty = 0;	
+	
 	$scope.storeList = [{name:'Bidronga',contact_no:'123'}, 
 						{name:'Jabka',contact_no:'123'},
 						{name:'Fresh',contact_no:'123'}];
@@ -44,12 +91,15 @@ app.controller("s1",function($scope){
             
       	  if (lists[i].itemId) {
                 	$scope.shopingList.push(lists[i]);
+                	$scope.totalqty = $scope.totalqty + lists[i].qty;
+                	$scope.netprices = $scope.netprices +  lists[i].aspectTotalPrice;
               }
     	
 	
     }
     	
     	$scope.txtItemId =  lists.length + 1;
+    	
     	
     }
 	
@@ -70,7 +120,8 @@ app.controller("s1",function($scope){
 								 'modifyTotalPrice':$scope.txtItemModifyTotalPrice,								 
 								 });
 		 	
-		
+		$scope.totalqty = $scope.totalqty + $scope.txtItemQty;
+		$scope.netprices = $scope.netprices +  $scope.txtItemAspctTotalPrice;
 		
 		
 		localStorage.setItem('itemStore',angular.toJson($scope.shopingList));    
@@ -97,10 +148,7 @@ app.controller("s1",function($scope){
 		
 	};
 	
-	
-	
-	
-	
+		
 });
 
 
@@ -109,9 +157,13 @@ app.controller("s1",function($scope){
  */
 
 
-
 app.controller("s2",function($scope){
 
+	
+	$scope.netprices = 0;
+	$scope.totalqty = 0;
+	$scope.totalitem = 0;
+	
 	var lists = angular.fromJson( localStorage.getItem("itemStore") );     
 	
 	console.log(lists);
@@ -125,11 +177,17 @@ app.controller("s2",function($scope){
     	  if (lists[i].itemId) {
     		  
               	$scope.shopingListInBucker.push(lists[i]);
+              	
+            	$scope.netprices = $scope.netprices + lists[i].aspectTotalPrice;
+            	$scope.totalqty =  $scope.totalqty + lists[i].qty;
+            	
 			  
             }
 
         
       }
+      
+      $scope.totalitem = lists.length;
     }
     
       
@@ -168,12 +226,16 @@ app.controller("s2",function($scope){
 app.controller("s3",function($scope){
 	
 	
+	$scope.netprices = 0;
+	$scope.totalqty = 0;
+	$scope.totalitem = 0;
+	
 	var lists = angular.fromJson( localStorage.getItem("itemStore") );
 	
 	console.log(lists);
 	
 	$scope.shopingListprice = [];
-	
+	var cnt = 0;
     if ( lists ) {
     	
       for (var i = 0; i < lists.length; i++) {
@@ -182,11 +244,19 @@ app.controller("s3",function($scope){
     		  if(lists[i].inBucket == 1)
     			  {
               	$scope.shopingListprice.push(lists[i]);
+              	$scope.netprices = $scope.netprices + lists[i].aspectTotalPrice ;
+            	$scope.totalqty = $scope.totalqty +lists[i].qty;
+            	
+            	
+            	cnt++;
     			  }
             }
 
         
       }
+      
+      $scope.totalitem = cnt;
+      
     }
 	
     $scope.updatePrice = function(itemId,mvalue)

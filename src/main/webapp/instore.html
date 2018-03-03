@@ -26,6 +26,33 @@ Shoping List
 
 <div ng-controller="s2">
 
+<div  style="display: inline; float: left; width: 30%" >
+<table>
+ <thead>
+ 	<td>
+ 	Total Item.
+ 	</td>
+ 	<td>
+ 	Total Qty.
+ 	</td>
+ 	<td>
+ 	Total Amount.
+ 	</td>
+ </thead>
+ <tr align="center">
+ 	<td>
+ 		{{totalitem}}
+ 	</td>
+ 	<td>
+ 		{{totalqty}}
+ 	</td>
+ 	<td>
+ 		{{netprices | customCurrency:"zl":".":" ":2:false}}
+ 	</td>
+ </tr>
+ </table>
+</div>
+<div style="display: inline; float: right; width: 70%" >
 <table class="tblShowList" style="width: 80%; text-align: center;">
 		<thead>
 			<td>
@@ -55,12 +82,12 @@ Shoping List
 			<td> {{lst_shoplist.itemName}} </td>
 			<td> {{lst_shoplist.storeName}} </td>
 			<td> {{lst_shoplist.qty}} </td>
-			<td> {{lst_shoplist.aspectPrice}} </td>
-			<td> {{lst_shoplist.aspectTotalPrice}} </td>
+			<td> {{lst_shoplist.aspectPrice | customCurrency:"zl":".":" ":2:false}} </td>
+			<td> {{lst_shoplist.aspectTotalPrice | customCurrency:"zl":".":" ":2:false}} </td>
 			<td> <input type="checkbox" ng-checked="lst_shoplist.inBucket" ng-click="inBucket(lst_shoplist.itemId, lst_shoplist.inBucket)"></td>			
 		</tr>
 	</table>
-
+</div>
 </div>
 
 <script src="js/shopapp.js"></script>

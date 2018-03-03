@@ -25,9 +25,37 @@ Shoping List
 
 
 <div  ng-controller="s3">
+<div  style="display: inline; float: left; width: 20%" >
+<table style="text-align: center;">
+ <thead>
+ 	<td>
+ 	Total Item.
+ 	</td>
+ 	<td>
+ 	Total Qty.
+ 	</td>
+ 	<td>
+ 	Total Amount.
+ 	</td>
+ </thead>
+ <tr align="center">
+ 	<td>
+ 		{{totalitem}}
+ 	</td>
+ 	<td>
+ 		{{totalqty}}
+ 	</td>
+ 	<td>
+ 		{{netprices | customCurrency:"zl.":".":" ":2:false}}
+ 	</td>
+ </tr>
+ </table>
+</div>
 
-<table class="tblShowList" style="width: 80%; text-align: center;">
-		<thead style="background-color: red;">
+<div style="display: inline; float: right; width: 80%" >
+
+<table class="tblShowList" style="text-align: center;">
+		<thead >
 			<td>
 				Item ID
 			</td>
@@ -55,20 +83,25 @@ Shoping List
 			<td>
 			</td>		
 		</thead>
-		<tr ng-repeat="lst_shoplist in shopingListprice" align="center" ng-class="$index % 2 == 1 ? 'even' : 'odd'">
+		<tr ng-repeat="lst_shoplist in shopingListprice" align="center" ng-class="lst_shoplist.modifyPrice > lst_shoplist.aspectPrice ? 'highprice' : 'lowprice'">
 			<td> {{lst_shoplist.itemId}} </td>
 			<td> {{lst_shoplist.itemName}} </td>
 			<td> {{lst_shoplist.storeName}} </td>
 			<td> {{lst_shoplist.qty}} </td>
-			<td> {{lst_shoplist.aspectPrice}} </td>
-			<td> {{lst_shoplist.aspectTotalPrice}} </td>
-			<td> <input type="number"  ng-model="lst_shoplist.modifyPrice" > </td>
-			<td> {{lst_shoplist.modifyTotalPrice = lst_shoplist.qty * lst_shoplist.modifyPrice}}</td>
+			<td> {{lst_shoplist.aspectPrice | customCurrency:"zl":".":" ":2:false}} </td>
+			<td> {{lst_shoplist.aspectTotalPrice | customCurrency:"zl":".":" ":2:false}} </td>
+			
+			
+			<td> <input type="number"  style="width: 50px" value="{{lst_shoplist.modifyPrice == 0 ? 1 : 2}}" ng-model="lst_shoplist.modifyPrice"  > zl
+			
+			
+			</td>
+			<td> {{lst_shoplist.modifyTotalPrice = lst_shoplist.qty * lst_shoplist.modifyPrice | customCurrency:"zl":".":" ":2:false}}</td>
 			
 			<td> <input type="button"  value="Update" ng-click="updatePrice(lst_shoplist.itemId, lst_shoplist.modifyPrice)"></td>			
 		</tr>
 	</table>
-
+</div>
 </div>
 
 <script src="js/shopapp.js"></script>

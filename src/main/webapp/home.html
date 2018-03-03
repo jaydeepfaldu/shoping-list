@@ -21,10 +21,12 @@ Shoping List
 <div class="title">Create Item List</div>
 <a href="home.html"> Create List </a> | <a href="instore.html"> In Bucket </a> | <a href="compare_price.html"> Compare Price </a> | <a href="" ng-click="clearData()"> Clear Data </a>
 </center>
-<form name="itemfrm">
-<div  ng-controller="s1" >
-<table class="addfrm">
 
+<div  ng-controller="s1" >
+<div  style="display: inline; float: left; width: 30%" >
+
+<form name="itemfrm">
+<table class="addfrm" >
 	<tr>
 		<td align="right">
 			Item ID :  
@@ -72,9 +74,10 @@ Shoping List
 			Aspected Item Price :  
 		</td>
 		<td>
-			<input type="number" name="txtItemAspctPrice" ng-model="txtItemAspctPrice" ng-required="true">
-			<span class="error" ng-show="itemfrm.txtItemAspctPrice.$invalid">Not a valid value</span>
-			<span class="error" ng-show="itemfrm.txtItemAspctPrice.$error.required">Item Price is required</span>
+			<input type="number" name="txtItemAspctPrice" min="1" ng-model="txtItemAspctPrice" ng-required="true">
+			<span class="error" ng-show="itemfrm.txtItemQty.$touched && itemfrm.txtItemAspctPrice.$invalid">Not a valid value</span>
+			<span class="error" ng-show="itemfrm.txtItemQty.$touched && itemfrm.txtItemAspctPrice.$error.required">Item Price is required</span>
+			zl.
 		</td>				
 	</tr>
 	<tr>		
@@ -82,7 +85,7 @@ Shoping List
 			Aspected Total Price :  
 		</td>
 		<td>
-			{{txtItemAspctTotalPrice = txtItemQty * txtItemAspctPrice | currency}}
+			{{txtItemAspctTotalPrice = txtItemQty * txtItemAspctPrice | customCurrency:"zl":".":" ":2:false}}
 		</td>				
 	</tr>
 		
@@ -97,8 +100,40 @@ Shoping List
 	</tr>
 </table>
  </form>
-	
-	<table style="width: 80%; text-align: center;">
+ <br>
+ <table>
+ <thead>
+ 	<td>
+ 	Total Item.
+ 	</td>
+ 	<td>
+ 	Total Qty.
+ 	</td>
+ 	<td>
+ 	Total Amount.
+ 	</td>
+ </thead>
+ <tr align="center">
+ 	<td>
+ 		{{txtItemId-1}}
+ 	</td>
+ 	<td>
+ 		{{totalqty}}
+ 	</td>
+ 	<td>
+ 		{{netprices | customCurrency:"zl":".":" ":2:false}}
+ 	</td>
+ </tr>
+ </table>
+ 
+ 
+ 
+ </div>
+			
+ 
+ 
+<div style="display: inline; float: right; width: 70%" >	
+	<table style="text-align: center;">
 		<thead>
 			<td>
 				Item ID
@@ -124,15 +159,13 @@ Shoping List
 			<td> {{lst_shoplist.itemName}} </td>
 			<td> {{lst_shoplist.storeName}} </td>
 			<td> {{lst_shoplist.qty}} </td>
-			<td> {{lst_shoplist.aspectPrice}} </td>
-			<td> {{lst_shoplist.aspectTotalPrice}} </td>
-						
+			<td> {{lst_shoplist.aspectPrice | customCurrency:"zl":".":" ":2:false}} </td>
+			<td> {{lst_shoplist.aspectTotalPrice | customCurrency:"zl":".":" ":2:false}} </td>
+				
+					
 		</tr>
 	</table>
-
-
-
-
+	</div>
 </div>
 
 

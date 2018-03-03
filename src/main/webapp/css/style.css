@@ -11,7 +11,7 @@
 	.title{
 		background-color: #005151; 
 		line-height: 30px; 
-		color:white;"
+		color:white;
 	}
 
   table {
@@ -106,4 +106,19 @@
   
   .odd {
     background-color: #95bfe1;
+  }
+  
+  .highprice
+  {
+  	background-color: #ff6a6a;
+  }
+  
+  .equalprice
+  {
+  	background-color: #9bff9b;
+  }
+  
+  .lowprice
+  {
+  	background-color: #a6a6ff;
   }
