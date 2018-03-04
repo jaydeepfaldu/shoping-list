@@ -133,6 +133,7 @@
 0:0:0:0:0:0:0:1 - - [04/Mar/2018:10:58:37 +0100] "GET /js/shopcontrol.js HTTP/1.1" 304 - http-bio-8080-exec-7 1
 0:0:0:0:0:0:0:1 - - [04/Mar/2018:10:58:48 +0100] "GET /js/shopcontrol.js HTTP/1.1" 304 - http-bio-8080-exec-4 1
 0:0:0:0:0:0:0:1 - - [04/Mar/2018:10:59:00 +0100] "GET /js/shopcontrol.js HTTP/1.1" 304 - http-bio-8080-exec-4 2
+<<<<<<< HEAD
 0:0:0:0:0:0:0:1 - - [04/Mar/2018:12:40:54 +0100] "GET / HTTP/1.1" 304 - http-bio-8080-exec-2 27
 0:0:0:0:0:0:0:1 - - [04/Mar/2018:12:40:56 +0100] "GET /home.html HTTP/1.1" 304 - http-bio-8080-exec-2 20
 0:0:0:0:0:0:0:1 - - [04/Mar/2018:12:40:56 +0100] "GET /css/style.css HTTP/1.1" 304 - http-bio-8080-exec-2 1
@@ -430,3 +431,5 @@
 0:0:0:0:0:0:0:1 - - [04/Mar/2018:13:13:24 +0100] "GET /instore.html HTTP/1.1" 304 - http-bio-8080-exec-8 2
 0:0:0:0:0:0:0:1 - - [04/Mar/2018:13:13:25 +0100] "GET /js/shopcontrol.js HTTP/1.1" 304 - http-bio-8080-exec-8 1
 0:0:0:0:0:0:0:1 - - [04/Mar/2018:13:13:26 +0100] "GET /home.html HTTP/1.1" 304 - http-bio-8080-exec-8 1
+=======
+>>>>>>> branch 'master' of https://github.com/jaydeepfaldu/shoping-list.git
