@@ -1,5 +1,10 @@
 @CHARSET "ISO-8859-1";
 
+<<<<<<< HEAD
+body {
+	margin: 0px;
+	font-family: fantasy;
+=======
 
 	body
 	{
@@ -37,12 +42,109 @@ li a:hover:not (.active ) {
 	background-color: #4CAF50;
 }
 
+<<<<<<< HEAD
+.title {
+	background-color: #005151;
+	line-height: 30px;
+	color: white;
+=======
+  table {
+    margin: 0 auto; /* or margin: 0 auto 0 auto */
+    
+    
+  }
+  
+  .addfrm td{
+  padding: 5px;
+  }
+  
+  header{
+  
+  	line-height: 100px;
+  	text-align: center;
+  	font-family:verdana;
+  	font-size: 25px;
+  	font-weight :bold;
+  	background-color: #008080;
+  	color: white;
+  
+  }
+  
+  input[type='button']{
+  width: 100px;
+  height: 40px;
+  
+  background-color: #005b5b;
+  
+  color:white;
+  border-style:solid;
+  border-color: white;
+  }
+  
+  input[type='button']:hover{
+   color:yellow;
+   border-color:yellow;
+   
+  
+  }
+  
+  input[type='checkbox']{
+ width: 20px !important;
+  height: 20px !important;
+  margin: 3px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance:none;
+  outline: 2px solid lightblue;
+  box-shadow: none;
+  font-size: 2em;
+  }
+   
+  
+  input[type=number] {
+  -moz-appearance: textfield;
+>>>>>>> branch 'master' of https://github.com/jaydeepfaldu/shoping-list.git
+>>>>>>> branch 'master' of https://github.com/jaydeepfaldu/shoping-list.git
+}
+
+<<<<<<< HEAD
+=======
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+li a:hover:not (.active ) {
+	background-color: #111;
+}
+
+.active {
+	background-color: #4CAF50;
+}
+
 .title {
 	background-color: #005151;
 	line-height: 30px;
 	color: white;
 }
 
+>>>>>>> branch 'master' of https://github.com/jaydeepfaldu/shoping-list.git
 table {
 	margin: 0 auto; /* or margin: 0 auto 0 auto */
 }

@@ -15,6 +15,7 @@
 
 	<header> Shoping List </header>
 
+<<<<<<< HEAD
 	<center>
 		<div class="title">Add Items in Bucket</div>
 		<ul>
@@ -25,10 +26,39 @@
 				ng-click="clearData()"> Clear Data </a></li>
 		</ul>
 	</center>
+=======
+<<<<<<< HEAD
+	<center>
+		<div class="title">Add Items in Bucket</div>
+		<ul>
+			<li><a href="home.html"> Create List </a></li>
+			<li><a href="instore.html"> In Bucket </a></li>
+			<li><a href="compare_price.html"> Compare Price </a></li>
+			<li style="float: right"><a class="active" href=""
+				ng-click="clearData()"> Clear Data </a></li>
+		</ul>
+	</center>
+=======
+Shoping List
+
+</header>
+
+<center>
+ <div class="title"> Add Items in Bucket </div>
+ <ul>
+  <li><a href="home.html"> Create List </a></li>
+  <li><a href="instore.html"> In Bucket </a></li>
+  <li><a href="compare_price.html"> Compare Price </a></li>
+  <li style="float:right"><a class="active"href="" ng-click="clearData()"> Clear Data </a></li>
+</ul>  
+</center>
+>>>>>>> branch 'master' of https://github.com/jaydeepfaldu/shoping-list.git
+>>>>>>> branch 'master' of https://github.com/jaydeepfaldu/shoping-list.git
 
 
 	<div ng-controller="s2">
 
+<<<<<<< HEAD
 		<div style="display: inline; float: left; width: 25%">
 			<table>
 				<thead>
@@ -72,6 +102,117 @@
 			</table>
 		</div>
 	</div>
+=======
+<<<<<<< HEAD
+		<div style="display: inline; float: left; width: 25%">
+			<table>
+				<thead>
+					<td>Total Item.</td>
+					<td>Total Qty.</td>
+					<td>Total Qty. in Bucket</td>
+					<td>Total Amount.</td>
+				</thead>
+				<tr align="center">
+					<td>{{totalitem}}</td>
+					<td>{{totalqty}}</td>
+					<td>{{totalqtyinbucket}}</td>
+					<td>{{netprices | customCurrency:"zl":".":" ":2:false}}</td>
+				</tr>
+			</table>
+		</div>
+		<div style="display: inline; float: right; width: 75%">
+			<table class="tblShowList" style="width:100%; text-align: center;">
+				<thead>
+					<td>Item ID</td>
+					<td>Item Name</td>
+					<td>Store Name</td>
+					<td>Item Qty.</td>
+					<td>Item Aspected Price</td>
+					<td>Aspected Total Price</td>
+					<td>In Bucket</td>
+				</thead>
+				<tr ng-repeat="lst_shoplist in shopingListInBucker" align="center"
+					ng-class="$index % 2 == 1 ? 'even' : 'odd'">
+					<td>{{lst_shoplist.itemId}}</td>
+					<td>{{lst_shoplist.itemName}}</td>
+					<td>{{lst_shoplist.storeName}}</td>
+					<td>{{lst_shoplist.qty}}</td>
+					<td>{{lst_shoplist.aspectPrice | customCurrency:"zl":".":"
+						":2:false}}</td>
+					<td>{{lst_shoplist.aspectTotalPrice |
+						customCurrency:"zl":".":" ":2:false}}</td>
+					<td><input type="checkbox" ng-checked="lst_shoplist.inBucket"
+						ng-click="inBucket(lst_shoplist.itemId, lst_shoplist.inBucket)"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+=======
+<div  style="display: inline; float: left; width: 30%" >
+<table>
+ <thead>
+ 	<td>
+ 	Total Item.
+ 	</td>
+ 	<td>
+ 	Total Qty.
+ 	</td>
+ 	<td>
+ 	Total Amount.
+ 	</td>
+ </thead>
+ <tr align="center">
+ 	<td>
+ 		{{totalitem}}
+ 	</td>
+ 	<td>
+ 		{{totalqty}}
+ 	</td>
+ 	<td>
+ 		{{netprices | customCurrency:"zl":".":" ":2:false}}
+ 	</td>
+ </tr>
+ </table>
+</div>
+<div style="display: inline; float: right; width: 70%" >
+<table class="tblShowList" style="width: 80%; text-align: center;">
+		<thead>
+			<td>
+				Item ID
+			</td>
+			<td>
+				Item Name
+			</td>		
+			<td>
+				Store Name
+			</td>			
+			<td>
+				Item Qty.
+			</td>		
+			<td>
+				Item Aspected Price
+			</td>				
+			<td>
+				Aspected Total Price
+			</td>	
+			<td>
+				In Bucket
+			</td>		
+		</thead>
+		<tr ng-repeat="lst_shoplist in shopingListInBucker" align="center" ng-class="$index % 2 == 1 ? 'even' : 'odd'">
+			<td> {{lst_shoplist.itemId}} </td>
+			<td> {{lst_shoplist.itemName}} </td>
+			<td> {{lst_shoplist.storeName}} </td>
+			<td> {{lst_shoplist.qty}} </td>
+			<td> {{lst_shoplist.aspectPrice | customCurrency:"zl":".":" ":2:false}} </td>
+			<td> {{lst_shoplist.aspectTotalPrice | customCurrency:"zl":".":" ":2:false}} </td>
+			<td> <input type="checkbox"   ng-checked="lst_shoplist.inBucket"  ng-click="inBucket(lst_shoplist.itemId, lst_shoplist.inBucket)"></td>			
+		</tr>
+	</table>
+</div>
+</div>
+>>>>>>> branch 'master' of https://github.com/jaydeepfaldu/shoping-list.git
+>>>>>>> branch 'master' of https://github.com/jaydeepfaldu/shoping-list.git
 
 	<script src="js/shopapp.js"></script>
 	<script src="js/shopcontrol.js"></script>
